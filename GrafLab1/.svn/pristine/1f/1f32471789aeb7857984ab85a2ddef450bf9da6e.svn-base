@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GrafLab1
+{
+    class Graf
+    {
+        private List<List<Coordinates>> graf = new List<List<Coordinates>>();
+        private int size = 0;
+
+
+        public void setSize(int size)
+        {
+            this.size = size;
+        }
+
+        public int getSize()
+        {
+            return this.size;
+        }
+
+        public Graf(GrafDecart grafDecart)
+        {
+            createGraf(grafDecart);
+        }
+
+        public List<List<Coordinates>> getGraf()
+        {
+            return this.graf;
+        }
+        public void setGraf(List<List<Coordinates>> graf)
+        {
+            this.graf = graf;
+        }
+
+        public Coordinates getCoordinates(int x, int y)
+        {
+            return this.graf[x][y];
+        }
+
+        /// <summary>
+        /// генераци ребер графа 
+        /// </summary>
+        private void createGraf(GrafDecart grafDecard)
+        {
+            Random random = new Random();
+            this.setSize(grafDecard.count());
+            for (int y = 0; y < grafDecard.count(); y++)
+            {
+                List<Coordinates> bufGrafMatrix = new List<Coordinates>();
+                for (int x = 0; x < grafDecard.count(); x++)
+                {
+                    Coordinates coordinates;
+                    int edgeGraf = random.Next(2);
+                    if (edgeGraf == 1)
+                    {
+                        coordinates = new Coordinates(true, grafDecard.getCoordinateDot(x), grafDecard.getCoordinateDot(y));
+                    }
+                    else
+                    {
+                        coordinates = new Coordinates();
+                    }
+                    bufGrafMatrix.Add(coordinates);
+
+                }
+                graf.Add(bufGrafMatrix);
+            }
+        }
+
+    }
+}

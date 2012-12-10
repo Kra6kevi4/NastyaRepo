@@ -1,0 +1,208 @@
+﻿namespace GrafLab1
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Требуется переменная конструктора.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Освободить все используемые ресурсы.
+        /// </summary>
+        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Код, автоматически созданный конструктором форм Windows
+
+        /// <summary>
+        /// Обязательный метод для поддержки конструктора - не изменяйте
+        /// содержимое данного метода при помощи редактора кода.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grafContractionButton = new System.Windows.Forms.Button();
+            this.grafAdditionButton = new System.Windows.Forms.Button();
+            this.grafConnectionButton = new System.Windows.Forms.Button();
+            this.grafUnionButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(524, 258);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(646, 258);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Location = new System.Drawing.Point(413, 284);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(339, 186);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Generation graf menu";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.grafContractionButton);
+            this.groupBox2.Controls.Add(this.grafAdditionButton);
+            this.groupBox2.Controls.Add(this.grafConnectionButton);
+            this.groupBox2.Controls.Add(this.grafUnionButton);
+            this.groupBox2.Location = new System.Drawing.Point(6, 60);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(327, 120);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Operation with grafs";
+            // 
+            // grafContractionButton
+            // 
+            this.grafContractionButton.Location = new System.Drawing.Point(69, 48);
+            this.grafContractionButton.Name = "grafContractionButton";
+            this.grafContractionButton.Size = new System.Drawing.Size(142, 23);
+            this.grafContractionButton.TabIndex = 3;
+            this.grafContractionButton.Text = "Contraction";
+            this.grafContractionButton.UseVisualStyleBackColor = true;
+            // 
+            // grafAdditionButton
+            // 
+            this.grafAdditionButton.Location = new System.Drawing.Point(183, 19);
+            this.grafAdditionButton.Name = "grafAdditionButton";
+            this.grafAdditionButton.Size = new System.Drawing.Size(75, 23);
+            this.grafAdditionButton.TabIndex = 2;
+            this.grafAdditionButton.Text = "Addition";
+            this.grafAdditionButton.UseVisualStyleBackColor = true;
+            // 
+            // grafConnectionButton
+            // 
+            this.grafConnectionButton.Location = new System.Drawing.Point(102, 19);
+            this.grafConnectionButton.Name = "grafConnectionButton";
+            this.grafConnectionButton.Size = new System.Drawing.Size(75, 23);
+            this.grafConnectionButton.TabIndex = 1;
+            this.grafConnectionButton.Text = "Connection";
+            this.grafConnectionButton.UseVisualStyleBackColor = true;
+            this.grafConnectionButton.Click += new System.EventHandler(this.grafConnectionButton_Click);
+            // 
+            // grafUnionButton
+            // 
+            this.grafUnionButton.Location = new System.Drawing.Point(21, 19);
+            this.grafUnionButton.Name = "grafUnionButton";
+            this.grafUnionButton.Size = new System.Drawing.Size(75, 23);
+            this.grafUnionButton.TabIndex = 0;
+            this.grafUnionButton.Text = "Union";
+            this.grafUnionButton.UseVisualStyleBackColor = true;
+            this.grafUnionButton.Click += new System.EventHandler(this.grafUnionButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(175, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Create second graf";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(163, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Create first graf";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(279, 233);
+            this.panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(312, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(284, 233);
+            this.panel2.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Location = new System.Drawing.Point(12, 268);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(279, 213);
+            this.panel3.TabIndex = 9;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(764, 620);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button grafContractionButton;
+        private System.Windows.Forms.Button grafAdditionButton;
+        private System.Windows.Forms.Button grafConnectionButton;
+        private System.Windows.Forms.Button grafUnionButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+    }
+}
+

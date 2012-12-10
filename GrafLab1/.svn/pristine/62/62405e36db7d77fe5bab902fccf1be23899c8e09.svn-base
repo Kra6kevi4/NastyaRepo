@@ -1,0 +1,169 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GrafLab1
+{
+    class Graf
+    {
+        private List<List<Coordinates>> graf = new List<List<Coordinates>>();
+        private int size = 0;
+
+        public Graf(int size)
+        {
+            this.createGraf(size);
+        }
+
+        public void setSize(int size)
+        {
+            this.size = size;
+        }
+
+        public int getSize()
+        {
+            return this.size;
+        }
+        //операция объединения
+        public static Graf operator +(Graf graf1, Graf graf2)
+        {
+            Graf graf = graf1.getSize()>graf2.getSize()?new Graf(graf1.getSize()):new Graf(graf2.getSize());
+            for (int y = 0; y < graf2.getSize(); y++)
+            {
+                for (int x = 0; x < graf2.getSize(); x++)
+                {
+                    if (graf2.getCoordinates(x, y).getEdge())
+                    {
+                        graf.setCoordinates(x, y, new Coordinates(graf2.getCoordinates(x, y).getEdge(), graf2.getCoordinates(x, y).getStartCoordinate(), graf2.getCoordinates(x, y).getEndCoordinate()));
+                    }
+                }
+            }
+
+            for (int y = 0; y < graf1.getSize(); y++)
+            {
+                for (int x = 0; x < graf1.getSize(); x++)
+                {
+                    if (graf1.getCoordinates(x, y).getEdge())
+                    {
+                        if (graf.getCoordinates(x, y).getEndCoordinate() == null && graf.getCoordinates(x, y).getStartCoordinate() == null)
+                        {
+                            if (graf1.getCoordinates(x, y).getStartCoordinate() != null || graf1.getCoordinates(x, y).getEndCoordinate()!=null)
+                                graf.setCoordinates(x, y, new Coordinates(true, graf1.getCoordinates(x, y).getStartCoordinate(), graf1.getCoordinates(x, y).getEndCoordinate()));
+                        }
+                        else
+                        {
+                            if (graf.getCoordinates(x, y).getEndCoordinate() != null && graf.getCoordinates(x, y).getStartCoordinate() != null)
+                            {
+                                graf.setCoordinates(x, y,
+                                                       new Coordinates(true,
+                                                                       graf.getCoordinates(x, y).getStartCoordinate(),
+                                                                       graf.getCoordinates(x, y).getEndCoordinate()));
+                            }
+                            else
+                            {
+                                if (graf.getCoordinates(x, y).getEndCoordinate() != null)
+                                {
+                                    graf.setCoordinates(x, y,
+                                                        new Coordinates(true,
+                                                                        graf1.getCoordinates(x, y).getStartCoordinate(),
+                                                                        graf.getCoordinates(x, y).getEndCoordinate()));
+
+                                }
+                                else
+                                {
+                                    if (graf.getCoordinates(x, y).getStartCoordinate() != null)
+                                    {
+                                        graf.setCoordinates(x, y,
+                                                            new Coordinates(true,
+                                                                            graf.getCoordinates(x, y).getStartCoordinate(),
+                                                                            graf1.getCoordinates(x, y).getEndCoordinate()));
+
+                                    }
+                                }
+                            }
+                        }
+
+                         }
+                }
+            }
+            return graf;
+
+        }
+
+        public Graf(GrafDecart grafDecart)
+        {
+            createGraf(grafDecart);
+        }
+        public Graf() { 
+        }
+
+        public List<List<Coordinates>> getGraf()
+        {
+            return this.graf;
+        }
+        public void setGraf(List<List<Coordinates>> graf)
+        {
+            this.graf = graf;
+        }
+
+        /// <summary>
+        /// получение элемента матрицы смежности
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Coordinates getCoordinates(int x, int y)
+        {
+            return this.graf[x][y];
+        }
+
+        public void setCoordinates(int x, int y, Coordinates coordinates)
+        {
+            this.graf[x][y] = coordinates;
+        }
+
+        /// <summary>
+        /// генераци ребер графа 
+        /// </summary>
+        private void createGraf(GrafDecart grafDecard)
+        {
+            Random random = new Random();
+            this.setSize(grafDecard.count());
+            for (int y = 0; y < grafDecard.count(); y++)
+            {
+                List<Coordinates> bufGrafMatrix = new List<Coordinates>();
+                for (int x = 0; x < grafDecard.count(); x++)
+                {
+                    Coordinates coordinates;
+                    int edgeGraf = random.Next(2);
+                    if (edgeGraf == 1)
+                    {
+                        coordinates = new Coordinates(true, grafDecard.getCoordinateDot(x), grafDecard.getCoordinateDot(y));
+                    }
+                    else
+                    {
+                        coordinates = new Coordinates();
+                    }
+                    bufGrafMatrix.Add(coordinates);
+
+                }
+                graf.Add(bufGrafMatrix);
+            }
+        }
+
+        private void createGraf(int size)
+        {
+            for (int y = 0 ; y< size ; y++)
+            {
+                List<Coordinates> bufGrafMatrix = new List<Coordinates>();
+                for (int x = 0; x<size; x++)
+                {
+                    bufGrafMatrix.Add(new Coordinates());
+                }
+                this.graf.Add(bufGrafMatrix);
+            }
+            
+        }
+
+    }
+}

@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+//координаты вершин из матрицы смежности
+namespace GrafLab1
+{
+    class Coordinates
+    {
+        private Boolean edge = false;//ребро графа
+        private DecartCoordinates startCoordinate = new DecartCoordinates();
+        private DecartCoordinates endCoordinate = new DecartCoordinates();
+
+        public Boolean getEdge()
+        {
+            return this.edge;
+        }
+        public void setEdge(Boolean edge)
+        {
+            this.edge = edge;
+        }
+
+        public DecartCoordinates getStartCoordinate()
+        {
+            return this.startCoordinate;
+        }
+        public void setStartCoordinate(DecartCoordinates startCoordinate)
+        {
+            this.startCoordinate = startCoordinate;
+        }
+
+        public DecartCoordinates getEndCoordinate()
+        {
+            return this.endCoordinate;
+        }
+        public void setEndCoordinate(DecartCoordinates endCoordinate)
+        {
+            this.endCoordinate = endCoordinate;
+        }
+    }
+}

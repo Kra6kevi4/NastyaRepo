@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+//класс рисования графа по заданной матрице смежности и сдвигу для рисования
+
+namespace GrafLab1
+{
+    class DrawGraw
+    {
+        // сдвиг на который нужно передвинуть нарисованный граф
+        private int displasment = 0;
+
+        public DrawGraw(int displasment)
+        {
+            this.setDisplasment(displasment);
+        }
+
+        public int getDisplasment()
+        {
+            return this.displasment;
+        }
+
+        private void setDisplasment(int displasment)
+        {
+            this.displasment = displasment;
+        }
+
+        /// <summary>
+        /// Функция вывода графа на экран
+        /// </summary>
+        /// <param name="graf">
+        /// матрица смежности графа котороый нужно построить
+        /// </param>
+        public void paintGraf(Graf graf , System.Drawing.Graphics grafic)
+        {
+            System.Drawing.Point pointStart = new System.Drawing.Point();
+            System.Drawing.Point pointEnd;
+            for (int y = 0; y < graf.getSizeGrafMatrixY()-1; y++)
+            {
+                for (int x = 0; x < graf.getSizeGrafMatrixX()-1; x++)
+                {
+                    if (graf.getElementGraf(x, y) > 0)
+                    {
+                        if (pointStart.IsEmpty)
+                        {
+                            pointStart = new System.Drawing.Point(x * 5, y * 5);
+                        }
+                        else {
+                            pointEnd = new System.Drawing.Point(x  * 5, y * 5);
+                            grafic.DrawLine(System.Drawing.Pens.Black, pointStart, pointEnd);
+                            pointStart = pointEnd;
+                        }
+                        
+                        
+                        
+                    }
+                }
+            }
+
+        }
+    }
+}

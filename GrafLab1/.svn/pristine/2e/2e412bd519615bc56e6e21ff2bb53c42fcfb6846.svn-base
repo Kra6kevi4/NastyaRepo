@@ -1,0 +1,222 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GrafLab1
+{
+    class Graf
+    {
+        private List<List<Boolean>> graf = new List<List<Boolean>>();
+        private int size = 0;// количество точек
+        private GrafDecart grafDecart;// кооординаты точек
+
+
+
+        public void setGrafDecart(GrafDecart grafDecart)
+        {
+            this.grafDecart = grafDecart;
+        }
+
+        public GrafDecart getGrafDecart()
+        {
+            return this.grafDecart;
+        }
+
+        public Graf(int size)
+        {
+            this.createGraf(size);
+        }
+
+        public void setSize(int size)
+        {
+            this.size = size;
+        }
+
+        public int getSize()
+        {
+            return this.size;
+        }
+
+        //получение координаты точки
+        public Coordinates getCoordinatePoint(int number)
+        {
+            int numberBuf = number +1;
+            if (this.getGrafDecart().getCoordinateDot(numberBuf) != null)
+                return new Coordinates(true,new DecartCoordinates(this.getGrafDecart().getCoordinateDot(numberBuf).getX(), this.getGrafDecart().getCoordinateDot(numberBuf).getY()),null );
+            else
+            {
+                return null;
+            }
+        }
+
+        //операция объединения
+        public static Graf operator +(Graf graf1, Graf graf2)
+        {
+            Graf graf = graf1.getSize()>graf2.getSize()?new Graf(graf1.getCountPoint(graf2.getGrafDecart())):new Graf(graf2.getCountPoint(graf1.getGrafDecart()));
+            
+             //заполняю координаты в пространстве
+            int grafDecartX = graf1.getGrafDecart().getSizeDecartGrafMatrixX() >
+                              graf2.getGrafDecart().getSizeDecartGrafMatrixX()
+                                  ? graf1.getGrafDecart().getSizeDecartGrafMatrixX()
+                                  : graf2.getGrafDecart().getSizeDecartGrafMatrixX();
+            int grafDecartY = graf1.getGrafDecart().getSizeDecartGrafMatrixY() >
+                              graf2.getGrafDecart().getSizeDecartGrafMatrixY()
+                                  ? graf1.getGrafDecart().getSizeDecartGrafMatrixY()
+                                  : graf2.getGrafDecart().getSizeDecartGrafMatrixY();
+
+            GrafDecart grafDecart = new GrafDecart(grafDecartX,grafDecartY,false);
+            for (int y = 0; y < graf2.getGrafDecart().getSizeDecartGrafMatrixY(); y++)
+            {
+                for (int x = 0; x < graf2.getGrafDecart().getSizeDecartGrafMatrixX(); x++)
+                {
+                    grafDecart.setGrafMatrixDecart(x,y, graf2.getGrafDecart().getElementDecartGraf(x, y));
+                }
+            }
+
+            for (int y = 0; y < graf1.getGrafDecart().getSizeDecartGrafMatrixY(); y++)
+            {
+                for (int x = 0; x < graf1.getGrafDecart().getSizeDecartGrafMatrixX(); x++)
+                {
+                    if (grafDecart.getElementDecartGraf(x,y)==0)
+                    {
+                        grafDecart.setGrafMatrixDecart(x, y, graf1.getGrafDecart().getElementDecartGraf(x, y)>0?grafDecart.findLastDot()+1:0);  
+                    }
+                    
+                }
+            }
+            graf.setGrafDecart(grafDecart);
+
+//заполняю грани в пространстве
+            for (int y = 0; y < graf2.getSize(); y++)
+            {
+                for (int x = 0; x < graf2.getSize(); x++)
+                {
+                    if (graf2.getCoordinates(x, y))
+                    {
+                        graf.setCoordinates(x, y,true);
+                    }
+                }
+            }
+
+            for (int y = 0; y < graf1.getGraf().Count; y++)
+            {
+                for (int x = 0; x < graf1.getGraf().Count; x++)
+                {
+                    if (graf1.getCoordinates(x, y))
+                    {
+                        graf.setCoordinates(graf.getGrafDecart().getElementDecartGraf(graf1.getCoordinatePoint(x).getStartCoordinate().getX(),
+                            graf1.getCoordinatePoint(x).getStartCoordinate().getY())-1,
+                                                                  graf.getGrafDecart().getElementDecartGraf(
+                                                                    graf1.getCoordinatePoint(y).getStartCoordinate().getX(),
+                                                                    graf1.getCoordinatePoint(y).getStartCoordinate().getY())-1, true);
+
+                    }
+                }
+            }
+
+
+           
+
+            return graf;
+
+        }
+
+        public Graf(GrafDecart grafDecart)
+        {
+            setGrafDecart(grafDecart);
+            createGraf(getGrafDecart());
+        }
+        public Graf() { 
+        }
+
+        public List<List<Boolean>> getGraf()
+        {
+            return this.graf;
+        }
+        public void setGraf(List<List<Boolean>> graf)
+        {
+            this.graf = graf;
+        }
+
+        /// <summary>
+        /// получение элемента матрицы смежности
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Boolean getCoordinates(int x, int y)
+        {
+            return this.graf[x][y];
+        }
+
+        public void setCoordinates(int x, int y, Boolean hasDot)
+        {
+            this.graf[x][y] = hasDot;
+        }
+
+        /// <summary>
+        /// генераци ребер графа 
+        /// </summary>
+        private void createGraf(GrafDecart grafDecard)
+        {
+            Random random = new Random();
+            this.setSize(grafDecard.count());
+            for (int y = 0; y < grafDecard.count(); y++)
+            {
+                List<Boolean> bufGrafMatrix = new List<Boolean>();
+                for (int x = 0; x < grafDecard.count(); x++)
+                {
+                    Boolean hasLink = false;
+                    int edgeGraf = random.Next(2);
+                    if (edgeGraf == 1)
+                    {
+                        hasLink = true;
+                    }
+                    
+                    bufGrafMatrix.Add(hasLink);
+
+                }
+                graf.Add(bufGrafMatrix);
+            }
+        }
+
+        //создает грав заданного размера(пустой граф)
+        private void createGraf(int size)
+        {
+            for (int y = 0 ; y< size ; y++)
+            {
+                List<Boolean> bufGrafMatrix = new List<Boolean>();
+                for (int x = 0; x<size; x++)
+                {
+                    bufGrafMatrix.Add(false);
+                }
+                this.graf.Add(bufGrafMatrix);
+            }
+            
+        }
+
+      //получение количкство точек на декартовой поверхности от двух пространственных 
+        public int getCountPoint(GrafDecart grafDecart)
+        {
+            int count = getGrafDecart().count();
+            for (int y = 0; y < grafDecart.getSizeDecartGrafMatrixY(); y++)
+            {
+                for (int x = 0; x < grafDecart.getSizeDecartGrafMatrixX(); x++)
+                {
+                    if (grafDecart.getElementDecartGraf(x,y)>0)
+                    {
+                        if (this.grafDecart.getSizeDecartGrafMatrixX()<=grafDecart.getSizeDecartGrafMatrixX() && this.grafDecart.getSizeDecartGrafMatrixY()<=grafDecart.getSizeDecartGrafMatrixY())
+                        {
+                            if (this.grafDecart.getElementDecartGraf(x, y) == 0)
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }                
+            }
+            return count;
+        }
+    }
+}

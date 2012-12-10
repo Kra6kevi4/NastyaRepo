@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GrafLab1
+{
+    class Graf
+    {
+
+        private List<List<int>> grafMatrix = new List<List<int>>();
+        private int sizeGrafMatrixX = 0;
+        private int sizeGrafMatrixY = 0;
+
+        public Graf(int x, int y)
+        {
+            this.setSizeGrafMatrixX(x);
+            this.setSizeGrafMatrixY(y);
+            this.createGraf();
+        }
+
+        public List<List<int>> getGrafMatrix()
+        {
+            return this.grafMatrix;
+        }
+
+        private void setSizeGrafMatrixX(int x)
+        {
+            this.sizeGrafMatrixX = x;
+        }
+
+        public int getSizeGrafMatrixX()
+        {
+            return this.sizeGrafMatrixX;
+        }
+
+
+        private void setSizeGrafMatrixY(int y)
+        {
+            this.sizeGrafMatrixY = y;
+        }
+
+
+        public int getSizeGrafMatrixY()
+        {
+            return this.sizeGrafMatrixY;
+        }
+
+        /// <summary>
+        /// функция создания графа
+        /// </summary>
+        private void createGraf()
+        {
+            Random random = new Random();
+            for (int y = 0; y < this.getSizeGrafMatrixY(); y++)
+            {
+                List<int> bufGrafMatrix = new List<int>();
+                for (int x = 0; x < this.getSizeGrafMatrixX(); x++)
+                {
+                    bufGrafMatrix.Add(random.Next(2));
+                }
+                grafMatrix.Add(bufGrafMatrix);
+            }
+        }
+
+        public int getElementGraf(int x, int y)
+        {
+            return this.grafMatrix[x][y];
+        }
+
+    }
+}

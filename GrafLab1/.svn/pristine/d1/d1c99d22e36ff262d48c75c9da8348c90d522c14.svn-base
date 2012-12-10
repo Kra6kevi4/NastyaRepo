@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+//класс рисования графа по заданной матрице смежности и сдвигу для рисования
+
+namespace GrafLab1
+{
+    class DrawGraw
+    {
+        // сдвиг на который нужно передвинуть нарисованный граф
+        private int displasment = 0;
+        private const int scaleGraf = 50;
+        private const int scalePoint = 5;//должено быть нечетно что бы поставить в центр 
+
+
+        public DrawGraw(int displasment)
+        {
+            this.setDisplasment(displasment);
+        }
+
+        public int getDisplasment()
+        {
+            return this.displasment;
+        }
+
+        private void setDisplasment(int displasment)
+        {
+            this.displasment = displasment;
+        }
+
+        public int getBetweenScalePoint() {
+            return scalePoint / 2+1;
+        }
+
+        /// <summary>
+        /// Функция вывода графа на экран
+        /// </summary>
+        /// <param name="graf">
+        /// матрица смежности графа котороый нужно построить
+        /// </param>
+        public void paintGraf(Graf graf, System.Drawing.Graphics grafic)
+        {
+            System.Drawing.Point pointStart = new System.Drawing.Point();
+            System.Drawing.Point pointEnd = new System.Drawing.Point();
+           
+            for (int y = 0; y < graf.getSize() - 1; y++)
+            {
+                for (int x = 0; x < graf.getSize() - 1; x++)
+                {
+                    Coordinates coordinates = graf.getCoordinates(x, y);
+                    if (coordinates.getEdge())
+                    {
+                        if (coordinates.getStartCoordinate() != null)
+                        {
+                            pointStart = new System.Drawing.Point(coordinates.getStartCoordinate().getX() * scaleGraf, coordinates.getStartCoordinate().getY() * scaleGraf);
+                            grafic.DrawRectangle(System.Drawing.Pens.Black, new System.Drawing.Rectangle(pointStart.X - getBetweenScalePoint(), pointStart.Y - getBetweenScalePoint(), scalePoint, scalePoint));
+
+                        }
+                        if (coordinates.getEndCoordinate() != null)
+                        {
+                           
+                            pointEnd = new System.Drawing.Point(coordinates.getEndCoordinate().getX() * scaleGraf, coordinates.getEndCoordinate().getY() * scaleGraf);
+                            grafic.DrawRectangle(System.Drawing.Pens.Black, new System.Drawing.Rectangle(pointEnd.X - getBetweenScalePoint(), pointEnd.Y - getBetweenScalePoint(), scalePoint, scalePoint));
+                        }
+                        if (coordinates.getEndCoordinate() != null && coordinates.getStartCoordinate() != null)
+                        {
+                            grafic.DrawLine(System.Drawing.Pens.Black, pointStart, pointEnd);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

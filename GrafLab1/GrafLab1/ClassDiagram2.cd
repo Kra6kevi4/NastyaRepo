@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GrafLab1.Coordinates">
+    <Position X="6" Y="4" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="7.5" />
+        <Point X="5.25" Y="6.681" />
+        <Point X="5.465" Y="6.681" Type="JumpStart" />
+        <Point X="5.632" Y="6.681" Type="JumpEnd" />
+        <Point X="6.75" Y="6.681" />
+        <Point X="6.75" Y="6.349" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAIAgAAAACAAAAAAAAAACCAAAAAAAAAAQAAAAAQIA=</HashCode>
+      <FileName>Coordinates.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="endCoordinate" />
+      <Field Name="startCoordinate" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GrafLab1.Node">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" FixedFromPoint="true">
+      <Path>
+        <Point X="5.062" Y="8.009" />
+        <Point X="5.062" Y="8.384" />
+        <Point X="3.094" Y="8.384" />
+        <Point X="3.094" Y="5.935" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAABgAGAAAAA=</HashCode>
+      <FileName>DecartCoordinates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.VisualGraph">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="7.5" />
+        <Point X="5.25" Y="7.092" />
+        <Point X="5.549" Y="7.092" />
+        <Point X="5.549" Y="6.265" />
+        <Point X="5.612" Y="6.265" />
+        <Point X="5.612" Y="3.756" />
+        <Point X="6" Y="3.756" />
+        <Point X="6" Y="3.506" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAEACgAAAAgAAAAAAAAAAAAAAAAQAAAAAAQAgAEA=</HashCode>
+      <FileName>DrawGraw.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.Form1" Collapsed="true">
+    <Position X="11.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ATAIAEwAACAEMJUQlBCACQDSCPg8kEhQMHQYASEiIAQ=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.Graph">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ADIEAIACgIAACYwAYIAAIAAAKIAAAAIgACQDCAAAEAI=</HashCode>
+      <FileName>Graf.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="grafDecart" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GrafLab1.Nodes">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="7.5" />
+        <Point X="5.25" Y="7.087" />
+        <Point X="3.177" Y="7.087" Type="JumpStart" />
+        <Point X="3.01" Y="7.087" Type="JumpEnd" />
+        <Point X="1.25" Y="7.087" />
+        <Point X="1.25" Y="6.249" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAANAAAAKAAAABACAAAAAAAAAgAAAIAAAAAAAAAA=</HashCode>
+      <FileName>GrafDecart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.OptionsGraf" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="7.5" />
+        <Point X="5.25" Y="7.367" />
+        <Point X="5.445" Y="7.367" />
+        <Point X="5.445" Y="7.098" />
+        <Point X="11.292" Y="7.098" Type="JumpStart" />
+        <Point X="11.458" Y="7.098" Type="JumpEnd" />
+        <Point X="12.5" Y="7.098" />
+        <Point X="12.5" Y="2.509" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OptionsGraf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.Program" Collapsed="true">
+    <Position X="11.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.Properties.Resources" Collapsed="true">
+    <Position X="11.75" Y="0.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="5.25" Y="7.5" />
+        <Point X="5.25" Y="7.394" />
+        <Point X="11.375" Y="7.394" />
+        <Point X="11.375" Y="1.005" />
+        <Point X="11.75" Y="1.005" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GrafLab1.Properties.Settings" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="4.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

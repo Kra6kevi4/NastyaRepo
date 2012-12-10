@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace GrafLab1
+{
+    public partial class Form1 : Form
+    {
+        private Graf graf1;
+        private Graf graf2;
+        private Graf grafResult;
+        private System.Drawing.Graphics grafic;
+
+        public Form1()
+        {
+            InitializeComponent();
+            this.grafic = this.CreateGraphics();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GrafDecart grafDecart1 = new GrafDecart(3, 3,true);
+            graf1 = new Graf(grafDecart1);
+            DrawGraw drawGraf = new DrawGraw(10,10,panel1);
+            drawGraf.paintGraf(graf1);
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+            GrafDecart grafDecart = new GrafDecart(3, 3,true);
+            graf2 = new Graf(grafDecart);
+            DrawGraw drawGraf = new DrawGraw(10,10,panel2);
+            drawGraf.paintGraf(graf2);
+            
+        }
+
+        private void grafUnionButton_Click(object sender, EventArgs e)
+        {
+            label1.Text =Convert.ToString( graf1.getCountPoint(graf2.getGrafDecart()));
+            grafResult = graf1 + graf2;
+            DrawGraw drawGraf = new DrawGraw(10, 10,panel3);
+            drawGraf.paintGraf(grafResult);
+            
+        }
+
+        private void grafConnectionButton_Click(object sender, EventArgs e)
+        {
+            DrawGraw drawGraf = new DrawGraw(10, 10, panel1);
+            drawGraf.paintGraf(graf1);
+        }
+
+        private void grafAdditionButton_Click(object sender, EventArgs e)
+        {
+            DrawGraw drawGraf = new DrawGraw(10, 10, panel2);
+            drawGraf.paintGraf(graf2);
+        }
+
+       
+    }
+}
